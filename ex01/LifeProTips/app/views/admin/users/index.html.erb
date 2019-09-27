@@ -1,0 +1,30 @@
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Adresse mail</th>
+      <th>Est Admin ?</th>
+      <th>Détails</th>
+      <th>Effacer</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.admin %></td>
+        <td>
+          <a  <%= link_to 'Détails', edit_admin_user_path(user) %></a>
+        </td>
+        <td>
+          <a  <%= link_to 'Effacer', admin_user_path(user), method: :delete %></a>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+</div>

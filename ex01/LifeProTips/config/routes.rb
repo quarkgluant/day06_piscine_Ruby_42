@@ -17,7 +17,12 @@ Rails.application.routes.draw do
   delete 'users/logout' => 'sessions#destroy', as: :logout
 
   # ----- end of added lines for session -----
-  root 'users#index'
+
+  namespace :admin do
+    resources :users
+  end
+  
+  root 'users#home'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
