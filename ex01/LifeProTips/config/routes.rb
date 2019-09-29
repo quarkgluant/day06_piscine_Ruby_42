@@ -18,10 +18,16 @@ Rails.application.routes.draw do
 
   # ----- end of added lines for session -----
 
+  # -- ex01 ----------------------------------
+
   namespace :admin do
     resources :users
   end
-  
+  get '/users/:id' => 'users#edit'
+  post '/users/:id' => 'users#edit'
+  # resources :users, except: %i[create new destroy index]
+
+  # -- ex01 ----------------------------------
   root 'users#home'
 
 

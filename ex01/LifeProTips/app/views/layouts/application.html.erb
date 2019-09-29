@@ -8,17 +8,22 @@
 </head>
 <body>
 <%# ----- add these lines here for print flash messages: ----- %>
+<div>
   <div>
     <% if notice %>
       <%= notice %>
     <% end %>
-
+  </div>
+  <div>
     <% if alert %>
       <%= alert %>
     <% end %>
   </div>
+</div>
 <%# ----- end of added lines for print flash messages ----- %>
-
+<div>
+  <%= "current_user dans la vue: #{current_user&.name}, admin? #{admin?}" if Rails.env.development? %>
+</div>
 <%= yield %>
 
 </body>

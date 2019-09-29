@@ -15,4 +15,6 @@ edit_admin_user GET    /admin/users/:id/edit(.:format) admin/users#edit
                 PATCH  /admin/users/:id(.:format)      admin/users#update
                 PUT    /admin/users/:id(.:format)      admin/users#update
                 DELETE /admin/users/:id(.:format)      admin/users#destroy
+                GET    /users/:id(.:format)            users#edit
+                POST   /users/:id(.:format)            users#edit
            root GET    /                               users#home
