@@ -1,0 +1,20 @@
+do /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex01/LifeProTips/bin/bundle exec /home/quark/.rvm/rubies/ruby-2.3.4/bin/ruby /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex01/LifeProTips/bin/rake routes --trace 
+Ruby enVironment Manager 1.29.9 (latest) (c) 2009-2017 Michal Papis, Piotr Kuczynski, Wayne E. Seguin
+
+         Prefix Verb   URI Pattern                     Controller#Action
+        sign_in GET    /users/sign_in(.:format)        users#sign_in
+          users POST   /users(.:format)                users#create
+          login GET    /login(.:format)                sessions#new
+                POST   /login(.:format)                sessions#create
+         logout DELETE /users/logout(.:format)         sessions#destroy
+    admin_users GET    /admin/users(.:format)          admin/users#index
+                POST   /admin/users(.:format)          admin/users#create
+ new_admin_user GET    /admin/users/new(.:format)      admin/users#new
+edit_admin_user GET    /admin/users/:id/edit(.:format) admin/users#edit
+     admin_user GET    /admin/users/:id(.:format)      admin/users#show
+                PATCH  /admin/users/:id(.:format)      admin/users#update
+                PUT    /admin/users/:id(.:format)      admin/users#update
+                DELETE /admin/users/:id(.:format)      admin/users#destroy
+                GET    /users/:id(.:format)            users#edit
+                POST   /users/:id(.:format)            users#edit
+           root GET    /                               users#home
