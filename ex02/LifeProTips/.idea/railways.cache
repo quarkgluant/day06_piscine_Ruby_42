@@ -1,7 +1,15 @@
-do /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex01/LifeProTips/bin/bundle exec /home/quark/.rvm/rubies/ruby-2.3.4/bin/ruby /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex01/LifeProTips/bin/rake routes --trace 
+do /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex02/LifeProTips/bin/bundle exec /home/quark/.rvm/rubies/ruby-2.3.4/bin/ruby /home/quark/Projects/42/Piscine_42_Ruby-master/day_06/ex02/LifeProTips/bin/rake routes --trace 
 Ruby enVironment Manager 1.29.9 (latest) (c) 2009-2017 Michal Papis, Piotr Kuczynski, Wayne E. Seguin
 
          Prefix Verb   URI Pattern                     Controller#Action
+          posts GET    /posts(.:format)                posts#index
+                POST   /posts(.:format)                posts#create
+       new_post GET    /posts/new(.:format)            posts#new
+      edit_post GET    /posts/:id/edit(.:format)       posts#edit
+           post GET    /posts/:id(.:format)            posts#show
+                PATCH  /posts/:id(.:format)            posts#update
+                PUT    /posts/:id(.:format)            posts#update
+                DELETE /posts/:id(.:format)            posts#destroy
         sign_in GET    /users/sign_in(.:format)        users#sign_in
           users POST   /users(.:format)                users#create
           login GET    /login(.:format)                sessions#new
@@ -15,6 +23,18 @@ edit_admin_user GET    /admin/users/:id/edit(.:format) admin/users#edit
                 PATCH  /admin/users/:id(.:format)      admin/users#update
                 PUT    /admin/users/:id(.:format)      admin/users#update
                 DELETE /admin/users/:id(.:format)      admin/users#destroy
-                GET    /users/:id(.:format)            users#edit
-                POST   /users/:id(.:format)            users#edit
-           root GET    /                               users#home
+    admin_posts GET    /admin/posts(.:format)          admin/posts#index
+                POST   /admin/posts(.:format)          admin/posts#create
+ new_admin_post GET    /admin/posts/new(.:format)      admin/posts#new
+edit_admin_post GET    /admin/posts/:id/edit(.:format) admin/posts#edit
+     admin_post GET    /admin/posts/:id(.:format)      admin/posts#show
+                PATCH  /admin/posts/:id(.:format)      admin/posts#update
+                PUT    /admin/posts/:id(.:format)      admin/posts#update
+                DELETE /admin/posts/:id(.:format)      admin/posts#destroy
+      edit_user GET    /users/:id(.:format)            users#edit
+                GET    /users/:id/edit(.:format)       users#edit
+           user GET    /users/:id(.:format)            users#show
+                PATCH  /users/:id(.:format)            users#update
+                PUT    /users/:id(.:format)            users#update
+           home GET    /home(.:format)                 users#home
+           root GET    /                               posts#index

@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+
+  # ------ début ex02 ---------------------------------
+
+  resources :posts
+
+  # ------ fin ex02 -----------------------------------
+
   # inscription avec le formulaire
   get 'users/sign_in' => 'users#sign_in', as: :sign_in
 
@@ -18,18 +25,24 @@ Rails.application.routes.draw do
 
   # ----- end of added lines for session -----
 
-  # -- ex01 ----------------------------------
+  # ---- début ex01 ----------------------------------
 
   namespace :admin do
     resources :users
+    # ----- début ex02 ---------------------------------
+    resources :posts
+    # ----- fin ex02 -----------------------------------
   end
-  get '/users/:id' => 'users#edit'
-  post '/users/:id' => 'users#edit'
-  # resources :users, except: %i[create new destroy index]
 
-  # -- ex01 ----------------------------------
-  root 'users#home'
+  get '/users/:id' => 'users#edit', as: :edit_user
 
+  resources :users, except: %i[create new destroy index]
+
+  # ---- fin ex01 ------------------------------------
+  # root 'users#home'
+
+  get '/home' => 'users#home', as: :home
+  root 'posts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
