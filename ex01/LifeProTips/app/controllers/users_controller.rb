@@ -3,6 +3,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    cookies[:animal] = {
+        value: get_random_animal,
+        expires: Time.current + 1.minute
+    }
   end
 
   def home;
@@ -27,12 +31,10 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-    # render nothing: true
   end
 
   def create
     @user = User.new(user_params)
-    # @user.downcase_fields
     if @user.save
       # If user saves in the db successfully:
       flash[:notice] = 'Compte créé avec succès'
@@ -41,7 +43,7 @@ class UsersController < ApplicationController
     else
       # If user fails model validation - probably a bad password or duplicate email:
       flash.now.alert = 'Oups, création impossible...'
-      redirect_to root_path
+      render 'users/sign_in'
     end
   end
 

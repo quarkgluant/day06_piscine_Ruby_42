@@ -2,6 +2,22 @@
 
 <%= form_for @user do |f| %>
 
+  <% if @user.errors.any? %>
+    <div id="error_explanation">    
+      <div class="alert alert-danger">
+              The form contains <%= pluralize(@user.errors.count, "erreur") %>.     
+      </div>
+          
+      <ul>    
+        <% @user.errors.full_messages.each do |msg| %>      
+          <li><%= msg %></li>
+              
+        <% end %>    
+      </ul>
+        
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :Nom %><br/>
     <%= f.text_field :name %>
@@ -21,3 +37,4 @@
     <%= f.submit :Inscription %>
   </div>
 <% end %>
+<%= link_to 'revenir à l\'accueil', root_path %>
