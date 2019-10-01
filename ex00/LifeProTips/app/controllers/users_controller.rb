@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     else
       # If user fails model validation - probably a bad password or duplicate email:
       flash.now.alert = 'Oups, création impossible...'
-      redirect_to root_path
+      render 'users/sign_in'
     end
   end
 
