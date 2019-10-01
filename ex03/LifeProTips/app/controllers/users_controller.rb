@@ -1,11 +1,17 @@
 class UsersController < ApplicationController
-  before_action :owners_only, only: %i[edit update]
+  before_action :get_user, only: %i[edit update]
 
   def index
     @users = User.all
   end
 
-  def home; end
+  def home
+    cookies[:animal] =
+      {
+        value: get_random_animal,
+        expires: Time.current + 1.minute
+      }
+  end
 
   def new
     @user = User.new
@@ -23,11 +29,9 @@ class UsersController < ApplicationController
     end
     # render nothing: true
   end
-  
+
   def create
     @user = User.new(user_params)
-    @user.email.downcase!
-    @user.name.downcase!
     if @user.save
       # If user saves in the db successfully:
       flash[:notice] = 'Compte créé avec succès'
@@ -36,7 +40,7 @@ class UsersController < ApplicationController
     else
       # If user fails model validation - probably a bad password or duplicate email:
       flash.now.alert = 'Oups, création impossible...'
-      redirect_to root_path
+      render 'sign_in'
     end
   end
 
@@ -50,10 +54,10 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def owners_only
+  def get_user
+    @user = User.find(params[:id])
     unless admin?
-      @user = User.find(params[:id])
-      redirect_to root_path if current_user != @user
+      # redirect_to root_path if current_user != @user
     end
   end
 end
