@@ -28,15 +28,15 @@ Rails.application.routes.draw do
   # ---- début ex01 ----------------------------------
 
   namespace :admin do
-    resources :users
+    resources :users, except: [:new, :create]
     # ----- début ex02 ---------------------------------
     resources :posts
     # ----- fin ex02 -----------------------------------
   end
 
-  get '/users/:id' => 'users#edit', as: :edit_user
+  # get '/users/:id' => 'users#edit', as: :edit_user
 
-  resources :users, except: %i[create new destroy index]
+  resources :users, only: [:edit, :update]
 
   # ---- fin ex01 ------------------------------------
   # root 'users#home'
