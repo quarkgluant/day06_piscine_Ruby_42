@@ -10,7 +10,9 @@ class Admin::PostsController < ApplicationController
 
   # GET /posts/1
   # GET /posts/1.json
-  def show; end
+  def show
+    @edit_by_name = User.find(@post.edit_by_user_id).name
+  end
 
   # GET /posts/new
   def new
