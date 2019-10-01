@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LifeProTips</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%# ----- add these lines here for print flash messages: ----- %>
+<div>
+  <div>
+    <% if notice %>
+      <%= notice %>
+    <% end %>
+  </div>
+  <div>
+    <% if alert %>
+      <%= alert %>
+    <% end %>
+  </div>
+</div>
+<%# ----- end of added lines for print flash messages ----- %>
+<div>
+  <%= "current_user dans la vue: #{current_user&.name}, admin? #{admin?}" if Rails.env.development? %>
+</div>
+<% if current_user %>
+  <div>
+    Welcome <%= current_user.name.capitalize %> |
+    <% if admin? %>
+      <%= link_to 'Administrate_users', admin_users_path %> <%= link_to 'Administrate_posts', admin_posts_path %>
+    <% else %>
+      <div>
+        Pour changer votre nom ou email <%= link_to 'Modifier nom ou email', edit_user_path(current_user) %>
+      </div>
+    <% end %>
+    <%= link_to :Log_out, logout_path, method: :delete %>
+  </div>
+
+<% else %>
+  <div>
+    <%= link_to :Sign_in, sign_in_path %> | <%= link_to :Login, login_path %>
+  </div>
+<% end %>
+<br/>
+<%= yield %>
+
+</body>
+</html>
