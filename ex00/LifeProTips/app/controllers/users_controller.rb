@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 
-  def index; end
+  def index
+    cookies[:animal] = {
+        value: get_random_animal,
+        expires: Time.current + 1.minute
+    }
+  end
 
   def new
     @user = User.new
