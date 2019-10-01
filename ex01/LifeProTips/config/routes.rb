@@ -21,10 +21,12 @@ Rails.application.routes.draw do
   # -- ex01 ----------------------------------
 
   namespace :admin do
-    resources :users
+    resources :users, except: %i[new create]
   end
-  get '/users/:id' => 'users#edit'
-  post '/users/:id' => 'users#edit'
+  get '/users/:id' => 'users#show', as: :user
+  get '/users/:id/edit' => 'users#edit', as: :edit_user
+  patch '/users/:id' => 'users#update'
+  put '/users/:id' => 'users#update'
   # resources :users, except: %i[create new destroy index]
 
   # -- ex01 ----------------------------------

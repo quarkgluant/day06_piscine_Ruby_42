@@ -1,17 +1,23 @@
 class UsersController < ApplicationController
-  before_action :owners_only, only: %i[edit update]
+  before_action :owners_only, only: %i[edit update show]
 
   def index
     @users = User.all
   end
 
-  def home; end
+  def home;
+  end
+
+  def show
+    render 'users/edit'
+  end
 
   def new
     @user = User.new
   end
 
-  def edit; end
+  def edit;
+  end
 
   def update
     user_params[:email].downcase!
@@ -23,11 +29,10 @@ class UsersController < ApplicationController
     end
     # render nothing: true
   end
-  
+
   def create
     @user = User.new(user_params)
-    @user.email.downcase!
-    @user.name.downcase!
+    # @user.downcase_fields
     if @user.save
       # If user saves in the db successfully:
       flash[:notice] = 'Compte créé avec succès'
@@ -51,9 +56,10 @@ class UsersController < ApplicationController
   end
 
   def owners_only
+    @user = User.find(params[:id])
     unless admin?
-      @user = User.find(params[:id])
-      redirect_to root_path if current_user != @user
+
+      # redirect_to root_path if current_user != @user
     end
   end
 end
