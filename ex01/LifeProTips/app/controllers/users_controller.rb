@@ -3,13 +3,14 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    cookies[:animal] = {
-        value: get_random_animal,
-        expires: Time.current + 1.minute
-    }
   end
 
-  def home;
+  def home
+    cookies[:animal] =
+      {
+        value: get_random_animal,
+        expires: Time.current + 1.minute
+      }
   end
 
   def show
@@ -20,8 +21,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit;
-  end
+  def edit; end
 
   def update
     user_params[:email].downcase!

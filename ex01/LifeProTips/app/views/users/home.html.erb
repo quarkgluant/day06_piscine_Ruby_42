@@ -19,7 +19,7 @@
 
 <% else %>
   <div>
-    Welcome <%= get_random_animal %> | <%= link_to :Sign_in, sign_in_path %> <%= link_to :Login, login_path %>
+    Welcome <%= "#{cookies[:animal]}_visitor" %> | <%= link_to :Sign_in, sign_in_path %> <%= link_to :Login, login_path %>
   </div>
 <% end %>
 <br/>
