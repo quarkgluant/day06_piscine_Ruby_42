@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :owners_only, only: %i[edit update show]
+  before_action :get_user, only: %i[edit update show]
 
   def index
     @users = User.all
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def owners_only
+  def get_user
     @user = User.find(params[:id])
     unless admin?
 
