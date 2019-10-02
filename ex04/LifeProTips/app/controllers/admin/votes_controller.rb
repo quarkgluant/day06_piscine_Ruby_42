@@ -17,7 +17,9 @@ class Admin::VotesController < ApplicationController
   end
 
   def destroy
-    vote = @post.votes.where(user_id: current_user.id)
+    vote = params[:vote]
+    vote.update_attributes(value: 0)
+    redirect_to @post, alert: "Vote destroyed"
   end
 
   private
