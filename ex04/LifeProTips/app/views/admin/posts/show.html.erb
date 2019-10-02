@@ -23,6 +23,8 @@
   <strong>Date of modification:</strong>
   <%= @post.updated_at %>
 </p>
-
+<div>
+  <%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } %>
+</div>
 <%= link_to 'Edit', edit_admin_post_path(@post) %> |
 <%= link_to 'Back', admin_posts_path %>

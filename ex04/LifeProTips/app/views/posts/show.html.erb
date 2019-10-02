@@ -1,28 +1,43 @@
-<p id="notice"><%= notice %></p>
+<div>
+  <p id="notice"><%= notice %></p>
+</div>
 
-<p>
-  <strong>Original author:</strong>
-  <%= @post.user_name %>
-</p>
+<div>
+  <p>
+    <strong>Original author:</strong>
+    <%= @post.user_name %>
+  </p>
+</div>
+<div>
+  <p>
+    <strong>Title:</strong>
+    <%= @post.title %>
+  </p></div>
+<div>
+  <p>
+    <strong>Content:</strong>
+    <%= @post.content %>
+  </p>
+</div>
+<div>
+  <p>
+    <strong>Edited by:</strong>
+    <%= @edit_by_name %>
+  </p>
+</div>
+<div>
+  <p>
+    <strong>Date of modification:</strong>
+    <%= @post.updated_at %>
+  </p>
+</div>
+<div>
+  <%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } %>
+</div>
+<div>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+</div>
+<div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-<p>
-  <strong>Edited by:</strong>
-  <%= @edit_by_name %>
-</p>
-
-<p>
-  <strong>Date of modification:</strong>
-  <%= @post.updated_at %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+</div>

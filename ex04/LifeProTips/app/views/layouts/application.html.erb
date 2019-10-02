@@ -28,7 +28,8 @@
   <div>
     Welcome <%= current_user.name.capitalize %> |
     <% if admin? %>
-      <%= link_to 'Administrate_users', admin_users_path %> <%= link_to 'Administrate_posts', admin_posts_path %>
+      <%= link_to 'Administrate_users', admin_users_path %> | <%= link_to 'Administrate_posts', admin_posts_path %> |
+      <%= link_to 'Administrate_votes', admin_votes_path %>
     <% else %>
       <div>
         Pour changer votre nom ou email <%= link_to 'Modifier nom ou email', edit_user_path(current_user) %>

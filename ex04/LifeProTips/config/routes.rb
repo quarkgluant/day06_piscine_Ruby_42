@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
-  # ------ début ex02 ---------------------------------
+  # ------ début ex02 modifié pour l'ex04 ---------------------------------
 
-  resources :posts
+  resources :posts do
+    resource :vote, module: :posts
+  end
 
-  # ------ fin ex02 -----------------------------------
+  # ------ fin ex02 modifié pour l'ex04 -----------------------------------
 
   # inscription avec le formulaire
   get 'users/sign_in' => 'users#sign_in', as: :sign_in
@@ -28,18 +30,23 @@ Rails.application.routes.draw do
   # ---- début ex01 ----------------------------------
 
   namespace :admin do
-    resources :users, except: [:new, :create]
+    resources :users, except: %i[new create]
+    # ----- début ex04 ---------------------------------
+    resources :votes, only: :index
+    # ----- fin ex04 -----------------------------------
     # ----- début ex02 ---------------------------------
-    resources :posts
+    resources :posts do
+      # ----- début ex04 ---------------------------------
+      resource :vote, only: [:create, :destroy]
+      # ----- fin ex04 -----------------------------------
+    end
     # ----- fin ex02 -----------------------------------
   end
 
-  # get '/users/:id' => 'users#edit', as: :edit_user
-
-  resources :users, only: [:edit, :update]
+  resources :users, only: %i[edit update]
 
   # ---- fin ex01 ------------------------------------
-  # root 'users#home'
+  # root 'users#home': :index
 
   get '/home' => 'users#home', as: :home
   root 'posts#index'

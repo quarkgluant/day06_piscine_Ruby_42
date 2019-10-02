@@ -11,7 +11,8 @@ class Admin::PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @edit_by_name = User.find(@post.edit_by_user_id).name
+    @edit_by_name = User.find(@post.edit_by_user_id).name unless @post.edit_by_user_id.nil?
+    @somme = @post.votes.inject(0) { |somme, vote| somme += vote.value }
   end
 
   # GET /posts/new
@@ -43,7 +44,7 @@ class Admin::PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
-      if @post.update(post_params) && @post.update_attribute(:edit_by_user_id, current_user.id)
+      if @post.update(post_params)
         format.html { redirect_to admin_posts_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else

@@ -1,0 +1,10 @@
+<div id="total_votes">
+  <strong>total des votes: </strong>
+  <%= somme %>
+</div>
+<p>
+  <%= button_to 'Upvote', post_vote_path(post), method: :post, params: {value: 1} %>
+</p>
+<p>
+  <%= button_to 'Downvote', post_vote_path(post), method: :post, params: {value: -1} %>
+</p>
