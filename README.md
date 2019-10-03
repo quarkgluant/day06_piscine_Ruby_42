@@ -136,7 +136,7 @@ puisque ce n'est pas un form(ulaire), pas besoin de strong_parameters, just `par
 ## ex05  
 Ici on mime un peu la célèbre gem **CanCanCan** (ou **Pundit**). Mais finalement, j'ai fait un truc très simple: 
 une méthode dans application_helper.rb `know_your_rights(user)` pour renvoyer en fonction du user ses droits et une 
-autre méthode (une helper_method) count_current_user_votes dans application_controller.rb. Ensuite je fais juste des if
+autre méthode (une helper_method) `count_current_user_votes` (pas besoin d'expliquer ce q'elle fait!) dans application_controller.rb. Ensuite je fais juste des if
 dans les vues pour afficher ou pas, par ex:  
 `<%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } if count_current_user_votes >= 3 %>`
 
