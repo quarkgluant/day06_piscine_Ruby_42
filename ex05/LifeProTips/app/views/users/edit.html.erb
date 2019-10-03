@@ -1,0 +1,18 @@
+<h1>
+  Modifier votre nom ou email
+</h1>
+<%= form_for @user do |f| %>
+
+  <div class="field">
+    <%= f.label :Nom %><br/>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="action">
+    <%= f.submit :Modification %>
+  </div>
+<% end %>

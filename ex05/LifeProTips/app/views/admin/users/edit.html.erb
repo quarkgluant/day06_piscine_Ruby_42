@@ -1,0 +1,21 @@
+<h1>
+  Modifier le nom ou l'email d'un utilisateur
+</h1>
+<%= form_for @user, url: admin_user_path(@user) do |f| %>
+ <%= 'user.id: ' + @user.id.to_s %>
+ <%= 'user.name: ' + @user.name %>
+ <%= 'user.email: ' + @user.email %>
+
+  <div class="field">
+    <%= f.label :Nom %><br/>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br/>
+    <%= f.email_field :email %>
+  </div>
+
+  <div class="action">
+    <%= f.submit :Modification %>
+  </div>
+<% end %>

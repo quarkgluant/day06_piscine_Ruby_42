@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Posts</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Votants Names</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td>
+        <ul>
+          <% post.votes.each do |vote| %>
+            <li><%= votant_name(vote.user_id) %>
+              <a><%= button_to 'Destroy Vote', admin_post_vote_path(post), method: :delete, params: {vote: vote, value: 0} %></a>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+      <td><%= link_to 'Show', admin_post_path(post) %></td>
+      <td><%= link_to 'Edit', edit_admin_post_path(post) %></td>
+      <td><%= link_to 'Destroy', admin_post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path %>
