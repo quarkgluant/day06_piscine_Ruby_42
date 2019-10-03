@@ -111,7 +111,7 @@ J'ai choisi d'implémenter la fonctionnalité en rajoutant un champ `edit_by_use
 une migration) et en utilisant, bien-sûr, le champ `updated_at`  de la même table.  
 
 ## ex04  
-Ha là on tape dans le `has_many through` comme association dans le modèle User.  
+Ha là on tape dans le `has_many through:` comme association dans le modèle User.  
 J'ai utilisé encore le namespacing pour 
 le contrôleur app/controllers/posts/votes_controller.rb (`class Posts::VotesController`) et pour la vue avec partial
 app/views/posts/votes/_votes.html.erb qui est "appelé" dans le posts/show.html.erb (ce qui s'avèrera très pratique pour 
@@ -151,7 +151,11 @@ tels
 * `rails g controller session log_in log_out`
 * `rails g -h` et `rails g *objet/choix possible* -h` pour l'aide
 
-Je suis en train de refaire ce jour 06, pour l'instant les ex00 à ex04 inclus sont finis, en respectant les consignes et les **Rails Best Practices** et score **Rubycritic** supérieur à 90
+Je suis en train de refaire ce jour 06, pour l'instant tous les exos sont finis, en respectant les consignes et les **Rails Best Practices** et score **Rubycritic** supérieur à 90
 manquent encore des seeds pour les exos 2 à 5 et surtout les **tests**  
+
+> quarkgluant/pcadiot  
+> octobre 2019  
+> Paris  
 
 P.S. Une petite étoile pour remercier fait toujours plaisir **SI** ce document vous a été utile
