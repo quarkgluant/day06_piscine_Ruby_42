@@ -19,7 +19,7 @@
         <ul>
           <% post.votes.each do |vote| %>
             <li><%= votant_name(vote.user_id) %>
-              <a><%= button_to 'Destroy Vote', admin_post_vote_path(post), method: :destroy, params: {vote: vote} %></a>
+              <a><%= button_to 'Destroy Vote', admin_post_vote_path(post), method: :delete, params: {vote: vote, value: 0} %></a>
             </li>
           <% end %>
         </ul>

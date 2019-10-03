@@ -7,7 +7,7 @@ class Admin::VotesController < ApplicationController
     # value = vote.value + params[:value].to_i
     vote.update_attributes(value: params[:value])
     respond_to do |format|
-      format.html { redirect_to @post, notice: "Post has a #{value} vote" }
+      format.html { redirect_to @post, notice: 'Post has a vote' }
       format.json { render :show, status: :ok, location: @post }
     end
   end
@@ -17,9 +17,9 @@ class Admin::VotesController < ApplicationController
   end
 
   def destroy
-    vote = params[:vote]
-    vote.update_attributes(value: 0)
-    redirect_to @post, alert: "Vote destroyed"
+    vote = Vote.find(params[:vote])
+    vote.delete
+    redirect_to admin_votes_path, alert: 'Vote destroyed'
   end
 
   private
