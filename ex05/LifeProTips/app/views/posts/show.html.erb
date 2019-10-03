@@ -32,10 +32,16 @@
   </p>
 </div>
 <div>
-  <%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } %>
+  <p>
+    <strong>your rights:</strong>
+    <%= know_your_rights(current_user) %>
+  </p>
 </div>
 <div>
-  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } if count_current_user_votes >= 3 %>
+</div>
+<div>
+  <%= link_to 'Edit', edit_post_path(@post) if count_current_user_votes > 9 || current_user_owns_post(@post) %> |
   <%= link_to 'Back', posts_path %>
 </div>
 <div>

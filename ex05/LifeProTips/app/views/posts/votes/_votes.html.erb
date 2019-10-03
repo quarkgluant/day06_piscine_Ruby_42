@@ -3,8 +3,8 @@
   <%= somme %>
 </div>
 <p>
-  <%= button_to 'Upvote', post_vote_path(post), method: :post, params: {value: 1} %>
+  <%= button_to 'Upvote', post_vote_path(post), method: :post, params: {value: 1} if count_current_user_votes >= 3 && count_current_user_votes < 6 %>
 </p>
 <p>
-  <%= button_to 'Downvote', post_vote_path(post), method: :post, params: {value: -1} %>
+  <%= button_to 'Downvote', post_vote_path(post), method: :post, params: {value: -1} if count_current_user_votes >= 6 && count_current_user_votes < 9 %>
 </p>

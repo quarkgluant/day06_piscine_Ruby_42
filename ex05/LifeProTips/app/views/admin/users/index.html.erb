@@ -5,6 +5,7 @@
       <th>Nom</th>
       <th>Adresse mail</th>
       <th>Est Admin ?</th>
+      <th>Droits</th>
       <th>Détails</th>
       <th>Effacer</th>
     </tr>
@@ -16,6 +17,7 @@
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.admin %></td>
+        <td><%= know_your_rights(user) %></td>
         <td>
           <a  <%= link_to 'Détails', edit_admin_user_path(user) %></a>
         </td>
