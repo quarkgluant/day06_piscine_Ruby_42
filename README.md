@@ -6,7 +6,13 @@ le jour 06 de la piscine Ruby de 42 refait/day06 of the 42 swimming pool Ruby/ra
   
 ### Tes meilleurs amis  
 les [railsguides](https://guides.rubyonrails.org/) pour des explications d'ensemble et la doc de l'[API](https://api.rubyonrails.org/) pour de la doc sur une méthode précise.  
-Une très bonne adresse en français [grafikart](https://www.grafikart.fr/tutoriels/ruby-on-rails)
+  
+Mais aussi:  
+Une très bonne adresse en français [grafikart](https://www.grafikart.fr/tutoriels/ruby-on-rails)  
+L'excellent [Rails tutorial](https://www.railstutorial.org/book) de Michael Hartl  
+[goRails](https://gorails.com/series), d'autant qu'avec le GitHub Student Pack, on bénéficie d'un abonnement d'un an gratos  
+[RailsCast](http://railscasts.com/)  
+ton cerveau, il peut servir...    
   
 ### Avant de coder, installons !  
 Avant toute chose et tout code, il vous faut utiliser un gestionnaire de version de Ruby (et donc de Rails) [RVM](https://rvm.io/) et [rbenv](https://github.com/rbenv/rbenv#readme) étant les plus connus et utilisés, mais existe aussi chruby, uru, etc.  
@@ -67,8 +73,8 @@ tels
 * `rails g scaffold Post user:references title:string content:text` qui code *presque* tout à votre place  
 * `rails g scaffold_controller Admin::Votes`  
 * `rails g model Vote user:references post:references value:integer` pour les modèles
-* `rails g migration AddIndexToTitleToPost` pour les migrations  
-* `rails g controller session`
+* `rails g migration AddIndexToTitleToPost`, `rails g migration AddFullnameToUser fullname:string` pour les migrations  
+* `rails g controller session log_in log_out`
 * `rails g -h` et `rails g *objet/choix possible* -h` pour l'aide
 
 Je suis en train de refaire ce jour 06, pour l'instant les ex00 à ex04 inclus sont finis, en respectant les consignes et les **Rails Best Practices** et score **Rubycritic** supérieur à 90
