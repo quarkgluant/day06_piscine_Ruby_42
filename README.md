@@ -113,7 +113,7 @@ une migration) et en utilisant, bien-sûr, le champ `updated_at`  de la même ta
 ## ex04  
 Ha là on tape dans le `has_many through` comme association dans le modèle User.  
 J'ai utilisé encore le namespacing pour 
-le contrôleur app/controllers/posts/votes_controller.rb (`class Posts::VotesController``) et pour la vue avec partial
+le contrôleur app/controllers/posts/votes_controller.rb (`class Posts::VotesController`) et pour la vue avec partial
 app/views/posts/votes/_votes.html.erb qui est "appelé" dans le posts/show.html.erb (ce qui s'avèrera très pratique pour 
 le dernier exo !). Le contrôleur votes_controller.rb n'a qu'une méthode create. celui d'admin possèce en plus une méthode 
 destroy et une méthode index.
