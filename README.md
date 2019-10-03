@@ -78,4 +78,6 @@ tels
 * `rails g -h` et `rails g *objet/choix possible* -h` pour l'aide
 
 Je suis en train de refaire ce jour 06, pour l'instant les ex00 à ex04 inclus sont finis, en respectant les consignes et les **Rails Best Practices** et score **Rubycritic** supérieur à 90
-manquent encore des seeds pour les exos 2 à 5 et surtout les **tests**
+manquent encore des seeds pour les exos 2 à 5 et surtout les **tests**  
+
+P.S. Une petite étoile pour remercier fait toujours plaisir
