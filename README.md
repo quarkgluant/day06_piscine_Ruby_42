@@ -31,7 +31,8 @@ Pour commencer voici des ressources sur l'inscription et l'authentification d'ut
 * [un article de Medium (en)](https://medium.com/@ColeHall/rails-authorization-without-using-3rd-party-gems-47545c694343)  
   
   
-##### quelques petits points:
+##### quelques petits points:  
+* l'utilisation de `has_secure_password` dans le modèle User
 * l'utilisation de `helper_method`, dans application_controller, qui permet non seulement de partager ces méthodes entre
 tous les contrôleurs mais aussi les vues. Pour rappel, les méthodes définies dans les helpers servent, elles, dans les vues. 
 Vu que le snippet de code fourni dans le sujet (fourni en sept 2017) ne marche plus, j'ai utilisé un petit bout de code 
@@ -107,7 +108,29 @@ argument (:post) qui permet dans le partial d'utiliser directement `post` à la 
   
 ## ex03  
 J'ai choisi d'implémenter la fonctionnalité en rajoutant un champ `edit_by_user_id` dans la table `posts` (avec bien-sûr 
-une migration). 
+une migration) et en utilisant, bien-sûr, le champ `updated_at`  de la même table.  
+
+## ex04  
+Ha là on tape dans le `has_many through` comme association dans le modèle User.  
+J'ai utilisé encore le namespacing pour 
+le contrôleur app/controllers/posts/votes_controller.rb (`class Posts::VotesController``) et pour la vue avec partial
+app/views/posts/votes/_votes.html.erb qui est "appelé" dans le posts/show.html.erb (ce qui s'avèrera très pratique pour 
+le dernier exo !). Le contrôleur votes_controller.rb n'a qu'une méthode create. celui d'admin possèce en plus une méthode 
+destroy et une méthode index.
+```ruby
+# extrait de la méthode create de posts/votes_controller.rb
+vote = @post.votes.where(user_id: current_user.id).first_or_create
+    # value = vote.value + params[:value].to_i
+    vote.update_attributes(value: params[:value])
+```
+`first_or_create` cherche dans la table si le vote existe et s'il n'existe pas le crée. J'ai décidé qu'un utilisateur ne
+ peut voter qu'une fois par Post (d'où la seconde ligne commentée ci-dessus). la valeur du vote (+1 ou -1) est envoyée 
+ dans params par:
+ ```erbruby
+<%= button_to 'Upvote', post_vote_path(post), method: :post, params: {value: 1} %>
+```
+puisque ce n'est pas un form(ulaire), pas besoin de strong_parameters, just `params[:value]`  
+
 ### le reste !  
 Je vous conseille d'utiliser les commandes `rails g`  (raccourci de `rails generate`). Les exemples donnés ci-dessous 
 ne correspondent pas forcèment à votre exo/app...  

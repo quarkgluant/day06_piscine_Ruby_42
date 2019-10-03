@@ -25,7 +25,6 @@ class Admin::UsersController < ApplicationController
     else
       render :edit
     end
-    # render nothing: true
   end
 
   def destroy
