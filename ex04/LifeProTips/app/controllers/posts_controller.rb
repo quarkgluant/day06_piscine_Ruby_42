@@ -12,8 +12,11 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @edit_by_name = User.find(@post.edit_by_user_id).name unless @post.edit_by_user_id.nil?
-    @somme = @post.votes.inject(0) { |somme, vote| somme += vote.value } unless @post.votes.nil?
-    @somme = 0 if @post.votes.nil?
+    @somme = if @post.votes.nil?
+               0
+             else
+               @post.votes.inject(0) { |somme, vote| somme += vote.value }
+              end
   end
 
   # GET /posts/new
