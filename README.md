@@ -31,6 +31,16 @@ Pour commencer voici des ressources sur l'inscription et l'authentification d'ut
 * [un article de Medium (en)](https://medium.com/@ColeHall/rails-authorization-without-using-3rd-party-gems-47545c694343)  
   
   
+##### quelques petits points:
+* l'utilisation de `helper_method`, dans application_controller, qui permet non seulement de partager ces méthodes entre
+tous les contrôleurs mais aussi les vues. Pour rappel, les méthodes définies dans les helpers servent, elles, dans les vues. 
+Vu que le snippet de code fourni dans le sujet (fourni en sept 2017) ne marche plus, j'ai utilisé un petit bout de code 
+simplissime ([].sample)  
+* la syntaxe d'expiration du cookie `expires: 1.minute` ne fonctionnant pas (dans users_controller#home), j'utilise
+`expires: Time.current + 1.minute`
+* l'utilisation de filtres dans app/models/user.rb tel que `before_save { self.email = email.downcase }` pour mettre en 
+minuscule avant de sauvegarder dans la base de données   
+
 ### ex01  
 Pour l'ex01, voici un extrait du livre di livre *Agile Web Development with Rails 5.1*  de Sam Ruby, David Bryant Copeland, with Dave Thomas  
 
@@ -66,9 +76,41 @@ est équivalent à:
 class Foo::Bar
 ``` 
 pour les curieux [question sur Stackoverflow](https://stackoverflow.com/questions/7821459/whats-the-difference-between-these-ruby-namespace-conventions)  
+
+attention à bien définir vos routes (app/config/routes), j'ai utilisé (la syntaxe %i[] permet de définir un array de symboles)
+```ruby
+  namespace :admin do
+    resources :users, except: %i[new create]
+  end
+```  
+
+## ex02  
+pensez aux associations dans vos modèles (`belongs_to :modèle_AU_SINGULIER et have_many :modèles_AU_PLURIEL`) et à 
+scaffolder pour créer Post `rails g scaffold Post user:references title:string content:text` qui code *presque* 
+tout à votre place  
   
+##### petits points:  
+* A noter dans app/models/post.rb
+```ruby
+delegate :name, to: :user, prefix: true
+```  
+qui permet de remplacer ici dans les vues `@post.user.name` qui fait couiner Rails best practices par `@post.user_name`
+* l'utilisation de partials dans les vues. Pour rappel on les appelle/affiche avec cette ligne dans une vue
+```erbruby
+<%= render 'Chemin_relatif(si besoin)/nom_du_partial', post: @post %>
+# ou si le partial n'est pas dans un sous dossier
+<%= render 'nom_du_partial', post: @post %>
+```  
+et leurs fichiers commencent TOUJOURS par un **_**, ici le fichier serait `_nom_du_partial.html.erb`. Ici on passe un 
+argument (:post) qui permet dans le partial d'utiliser directement `post` à la place de `@post`. Heureusement, car utiliser
+@post dans le partial fait (encore) râler Rails best practices !  
+  
+## ex03  
+J'ai choisi d'implémenter la fonctionnalité en rajoutant un champ `edit_by_user_id` dans la table `posts` (avec bien-sûr 
+une migration). 
 ### le reste !  
-Je vous conseille d'utiliser les commandes `rails g`  (raccourci de `rails generate`). Les exemples donnés ci-dessous ne correspondent pas forcèment à votre exo/app...  
+Je vous conseille d'utiliser les commandes `rails g`  (raccourci de `rails generate`). Les exemples donnés ci-dessous 
+ne correspondent pas forcèment à votre exo/app...  
 tels 
 * `rails g scaffold Post user:references title:string content:text` qui code *presque* tout à votre place  
 * `rails g scaffold_controller Admin::Votes`  
