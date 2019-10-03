@@ -115,7 +115,7 @@ Ha là on tape dans le `has_many through` comme association dans le modèle User
 J'ai utilisé encore le namespacing pour 
 le contrôleur app/controllers/posts/votes_controller.rb (`class Posts::VotesController`) et pour la vue avec partial
 app/views/posts/votes/_votes.html.erb qui est "appelé" dans le posts/show.html.erb (ce qui s'avèrera très pratique pour 
-le dernier exo !). Le contrôleur votes_controller.rb n'a qu'une méthode create. celui d'admin possèce en plus une méthode 
+le dernier exo !). Le contrôleur votes_controller.rb n'a qu'une méthode create. celui d'admin possède en plus une méthode 
 destroy et une méthode index.
 ```ruby
 # extrait de la méthode create de posts/votes_controller.rb
@@ -125,11 +125,20 @@ vote = @post.votes.where(user_id: current_user.id).first_or_create
 ```
 `first_or_create` cherche dans la table si le vote existe et s'il n'existe pas le crée. J'ai décidé qu'un utilisateur ne
  peut voter qu'une fois par Post (d'où la seconde ligne commentée ci-dessus). la valeur du vote (+1 ou -1) est envoyée 
- dans params par:
+ dans params pour l'upvote (le downvote se fait de la même façon avec la value: -1) par:
  ```erbruby
+# app/views/posts/votes/_votes.html.erb
+ #... 
 <%= button_to 'Upvote', post_vote_path(post), method: :post, params: {value: 1} %>
 ```
 puisque ce n'est pas un form(ulaire), pas besoin de strong_parameters, just `params[:value]`  
+
+## ex05  
+Ici on mime un peu la célèbre gem **CanCanCan** (ou **Pundit**). Mais finalement, j'ai fait un truc très simple: 
+une méthode dans application_helper.rb `know_your_rights(user)` pour renvoyer en fonction du user ses droits et une 
+autre méthode (une helper_method) count_current_user_votes dans application_controller.rb. Ensuite je fais juste des if
+dans les vues pour afficher ou pas, par ex:  
+`<%= render partial: '/posts/votes/votes', locals: { post: @post, somme: @somme } if count_current_user_votes >= 3 %>`
 
 ### le reste !  
 Je vous conseille d'utiliser les commandes `rails g`  (raccourci de `rails generate`). Les exemples donnés ci-dessous 
@@ -145,4 +154,4 @@ tels
 Je suis en train de refaire ce jour 06, pour l'instant les ex00 à ex04 inclus sont finis, en respectant les consignes et les **Rails Best Practices** et score **Rubycritic** supérieur à 90
 manquent encore des seeds pour les exos 2 à 5 et surtout les **tests**  
 
-P.S. Une petite étoile pour remercier fait toujours plaisir
+P.S. Une petite étoile pour remercier fait toujours plaisir **SI** ce document vous a été utile
