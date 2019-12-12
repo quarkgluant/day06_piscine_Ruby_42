@@ -5,13 +5,14 @@ le jour 06 de la piscine Ruby de 42 refait/day06 of the 42 swimming pool Ruby/ra
   
   
 ### Tes meilleurs amis  
-les [railsguides](https://guides.rubyonrails.org/) pour des explications d'ensemble et la doc de l'[API](https://api.rubyonrails.org/) pour de la doc sur une méthode précise.  
+* les [railsguides](https://guides.rubyonrails.org/) pour des explications d'ensemble et la doc de l'[API](https://api.rubyonrails.org/) pour de la doc sur une méthode précise.  
   
 Mais aussi:  
-Une très bonne adresse en français [grafikart](https://www.grafikart.fr/tutoriels/ruby-on-rails)  
-L'excellent [Rails tutorial](https://www.railstutorial.org/book) de Michael Hartl  
-[goRails](https://gorails.com/series), d'autant qu'avec le GitHub Student Pack, on bénéficie d'un abonnement d'un an gratos  
-[RailsCast](http://railscasts.com/)  
+* Une très bonne adresse en français [grafikart](https://www.grafikart.fr/tutoriels/ruby-on-rails)  
+* L'excellent [Rails tutorial](https://www.railstutorial.org/book) de Michael Hartl  
+* [goRails](https://gorails.com/series), d'autant qu'avec le GitHub Student Pack, on bénéficie d'un abonnement d'un an gratos  
+* Les vidéos de [RailsCast](http://railscasts.com/)  
+* Et une toute nouvelle ressource (doc + code), très complète, [RubyGarage](https://rubygarage.github.io/)  
 ton cerveau, il peut servir...    
   
 ### Avant de coder, installons !  
