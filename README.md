@@ -13,7 +13,7 @@ Mais aussi:
 * [goRails](https://gorails.com/series), d'autant qu'avec le GitHub Student Pack, on bénéficie d'un abonnement d'un an gratos  
 * Les vidéos de [RailsCast](http://railscasts.com/)  
 * Et une toute nouvelle ressource (doc + code), très complète, [RubyGarage](https://rubygarage.github.io/)  
-ton cerveau, il peut servir...    
+* ton cerveau, il peut servir...    
   
 ### Avant de coder, installons !  
 Avant toute chose et tout code, il vous faut utiliser un gestionnaire de version de Ruby (et donc de Rails) [RVM](https://rvm.io/) et [rbenv](https://github.com/rbenv/rbenv#readme) étant les plus connus et utilisés, mais existe aussi chruby, uru, etc.  
